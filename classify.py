@@ -2,7 +2,6 @@
 #class 2 = Dilantin
 #class 3 = No medication
 
-import os
 from operator import contains
 
 def searchMedication(file):
@@ -13,8 +12,8 @@ def searchMedication(file):
             if contains(line,'DILANTIN') or contains(line,'phenytoin') or contains(line,'Dilantin') or contains(line,'Phenytoin') or contains(line,'dilantin') or contains(line,'phenytoin'):
                 return 2
         return 3
-
-for dirname, dirnames, filenames in os.walk('TUH EEG/edf'):
+import os
+for dirname, dirnames, filenames in os.walk('TUH_EEG/edf'):
     for filename in filenames:
         filepath = os.path.join(dirname, filename)
         if filename[-3:] == 'txt':
