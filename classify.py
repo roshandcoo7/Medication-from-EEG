@@ -25,37 +25,42 @@ c3 = 0
 total = 1838
 for dirname, dirnames, filenames in os.walk('TUH_EEG/edf'):
     edfs = []
+    names = []
     report = None
 
     for filename in filenames:
         filepath = os.path.join(dirname, filename)
         if filename[-3:] == 'edf':
             edfs.append(filepath)
+            names.append(filename)
         elif filename[-3:] == 'txt':
             report = filepath
 
     if report:
         if searchMedication(report) == 1:
             
-            for edffilepath in edfs:
-                c1 += 1
-                dest = shutil.copyfile(edffilepath,class_1+str(c1)+'.edf')
+            for i in range(len(edfs)):
+                # print(edfs[i],names[i],1)
+                # c1 += 1
+                dest = shutil.copyfile(edfs[i],class_1+names[i])
                 total -= 1
                 print(total)
                 
         if searchMedication(report) == 2:
             
-            for edffilepath in edfs:
-                c2 += 1
-                dest = shutil.copyfile(edffilepath,class_2+str(c2)+'.edf')
+            for i in range(len(edfs)):
+                # print(edfs[i],names[i],2)
+                # # c2 += 1
+                dest = shutil.copyfile(edfs[i],class_2+names[i])
                 total -= 1
                 print(total)
 
         if searchMedication(report) == 3:
             
-            for edffilepath in edfs:
-                c3 += 1
-                dest = shutil.copyfile(edffilepath,class_3+str(c3)+'.edf')
+            for i in range(len(edfs)):
+                # print(edfs[i],names[i],3)
+                # # c3 += 1
+                dest = shutil.copyfile(edfs[i],class_3+names[i])
                 total -= 1
                 print(total)
 # print(c1,c2,c3)
