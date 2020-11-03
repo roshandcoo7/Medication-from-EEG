@@ -38,6 +38,7 @@ def cleanAndRaw(filePath):
     good_channels = set(good_channels)
 
     eeg = mne.io.read_raw_edf(filePath)
+
     eeg = eeg.resample(100, npad='auto')  
 
     channels = eeg.info.ch_names
@@ -60,9 +61,9 @@ def cleanAndRaw(filePath):
         highcut = 50
 
         t = np.arange(0,raw_eeg.shape[1],1)
+
         for i in range(19):
             raw_eeg[i] = butter_bandpass_filter(raw_eeg[i], lowcut, highcut, fs, order=5)
-
 
         raw_eeg = np.delete(raw_eeg,np.s_[:600], axis=1)    
         raw_eeg = np.delete(raw_eeg,np.s_[30000:], axis=1)    
@@ -73,6 +74,6 @@ def cleanAndRaw(filePath):
 
         return None
 
-raw = cleanAndRaw('/content/00000124_s007_t022.edf')
+raw = cleanAndRaw('/content/00001680_s006_t001.edf')
 
-channel_spec1 = plt.specgram(raw[6],Fs=100,NFFT=128,noverlap=32)
+channel_spec1 = plt.specgram(raw[18],Fs=100,NFFT=100,noverlap=50)
