@@ -2,3 +2,6 @@ TUH_EEG/
 class_1/
 class_2/
 class_3/
+spectrograms/c2/images/
+spectrograms/c2/signal as ndarray/
+spectrograms/c3/spectrograms as csv/
